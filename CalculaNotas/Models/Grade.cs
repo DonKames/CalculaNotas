@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalculaNotas.Models
 {
-    internal class Grade
+    public class Grade
     {
         public int GradeId { get; set; }
         public double Value { get; set; }

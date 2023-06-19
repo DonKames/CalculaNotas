@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalculaNotas.Models
 {
-    internal class Semester
+    public class Semester
     {
         public int SemesterId { get; set; }
         public string Name { get; set; }

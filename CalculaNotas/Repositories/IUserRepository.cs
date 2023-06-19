@@ -7,9 +7,15 @@ using CalculaNotas.Models;
 
 namespace CalculaNotas.Repositories
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
-        User GetUserById(int id);
+        // User GetUserById(int id);
         // Otros métodos necesarios para trabajar con los usuarios
+
+        Task<User> GetUserById(int id);
+        Task<List<User>> GetAllUsers();
+        Task<User> AddUser(User user);
+        Task<User> UpdateUser(User user);
+        Task DeleteUser(int id);
     }
 }

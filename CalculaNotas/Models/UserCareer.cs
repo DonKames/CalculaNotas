@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace CalculaNotas.Models
 {
-    public class Career
+    public class UserCareer
     {
+        public int UserId { get; set; }
+        public User User { get; set; }
+
         public int CareerId { get; set; }
-        public string Name { get; set; }
-        public ICollection<Semester> Semesters { get; set; }
-        public ICollection<UserCareer> UserCareers { get; set; }
+        public Career Career { get; set; }
     }
 }
