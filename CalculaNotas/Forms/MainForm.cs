@@ -7,10 +7,13 @@ namespace CalculaNotas
 {
     public partial class MainForm : Form
     {
+        // El user para usar en toda la APP
+        public User CurrentUser { get; set; }
+
         private readonly IUnitOfWork _unitOfWork;
         public MainForm(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork ;
+            _unitOfWork = unitOfWork;
             InitializeComponent();
         }
 
@@ -24,31 +27,36 @@ namespace CalculaNotas
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            List<User> allUsers = await _unitOfWork.Users.GetAllUsers();
-            // Hacer algo con la lista de usuarios...
-
-            if (allUsers != null)
+            try
             {
+                List<User> allUsers = await _unitOfWork.Users.GetAllUsers();
+                // Hacer algo con la lista de usuarios...
+
+
                 Debug.WriteLine("No es nulo");
-                if (!allUsers.Any())
+                if (allUsers.Any())
+                {
+                    Debug.WriteLine("La lista de usuarios no está vacía");
+                    CurrentUser = allUsers.First();
+
+                    welcomeLabel.Text = "Bienvenido: " + CurrentUser.Name;
+                }
+                else
                 {
                     Debug.WriteLine("La lista de usuarios está vacía");
 
                     FirstUserForm firstUserForm = new(_unitOfWork);
 
                     firstUserForm.ShowDialog();
-                } else
-                {
-                    Debug.WriteLine("La lista de usuarios no está vacía");
-
                 }
-            }
-            else
-            {
-                Debug.WriteLine("puede que sea nulo");
-                Debug.WriteLine(allUsers);
 
             }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine($"Ocurrió un error al cargar los usuarios: {ex.Message}");
+            }
+
         }
     }
 }

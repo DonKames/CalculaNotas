@@ -28,35 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.configButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            configButton = new Button();
+            welcomeLabel = new Label();
+            statusStrip1 = new StatusStrip();
+            SuspendLayout();
             // 
             // configButton
             // 
-            this.configButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.configButton.Location = new System.Drawing.Point(713, 12);
-            this.configButton.Name = "configButton";
-            this.configButton.Size = new System.Drawing.Size(75, 23);
-            this.configButton.TabIndex = 0;
-            this.configButton.Text = "Config";
-            this.configButton.UseVisualStyleBackColor = true;
-            this.configButton.Click += new System.EventHandler(this.configButton_Click);
+            configButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            configButton.Location = new Point(310, 12);
+            configButton.Name = "configButton";
+            configButton.Size = new Size(75, 23);
+            configButton.TabIndex = 0;
+            configButton.Text = "Config";
+            configButton.UseVisualStyleBackColor = true;
+            configButton.Click += configButton_Click;
+            // 
+            // welcomeLabel
+            // 
+            welcomeLabel.AutoSize = true;
+            welcomeLabel.Location = new Point(12, 9);
+            welcomeLabel.Name = "welcomeLabel";
+            welcomeLabel.Size = new Size(72, 15);
+            welcomeLabel.TabIndex = 1;
+            welcomeLabel.Text = "Bienvenido: ";
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Location = new Point(0, 539);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(397, 22);
+            statusStrip1.TabIndex = 2;
+            statusStrip1.Text = "statusStrip1";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.configButton);
-            this.Name = "MainForm";
-            this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(397, 561);
+            Controls.Add(statusStrip1);
+            Controls.Add(welcomeLabel);
+            Controls.Add(configButton);
+            MinimumSize = new Size(400, 600);
+            Name = "MainForm";
+            Text = "MainForm";
+            Load += MainForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button configButton;
+        private Label welcomeLabel;
+        private StatusStrip statusStrip1;
     }
 }

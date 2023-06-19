@@ -28,87 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            nameLabel = new Label();
+            nameTextBox = new TextBox();
+            titleLabel = new Label();
+            emailLabel = new Label();
+            emailTextBox = new TextBox();
+            saveButton = new Button();
+            SuspendLayout();
             // 
             // nameLabel
             // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(12, 73);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(57, 15);
-            this.nameLabel.TabIndex = 0;
-            this.nameLabel.Text = "Nombre: ";
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new Point(12, 73);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(57, 15);
+            nameLabel.TabIndex = 0;
+            nameLabel.Text = "Nombre: ";
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameTextBox.Location = new System.Drawing.Point(75, 70);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(154, 23);
-            this.nameTextBox.TabIndex = 1;
+            nameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            nameTextBox.Location = new Point(75, 70);
+            nameTextBox.Name = "nameTextBox";
+            nameTextBox.Size = new Size(154, 23);
+            nameTextBox.TabIndex = 1;
             // 
             // titleLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(66, 20);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(109, 15);
-            this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "Registro de Usuario";
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new Point(66, 20);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new Size(109, 15);
+            titleLabel.TabIndex = 2;
+            titleLabel.Text = "Registro de Usuario";
             // 
             // emailLabel
             // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(12, 111);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(42, 15);
-            this.emailLabel.TabIndex = 3;
-            this.emailLabel.Text = "Email: ";
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new Point(12, 111);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new Size(42, 15);
+            emailLabel.TabIndex = 3;
+            emailLabel.Text = "Email: ";
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailTextBox.Location = new System.Drawing.Point(75, 108);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(154, 23);
-            this.emailTextBox.TabIndex = 4;
+            emailTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            emailTextBox.Location = new Point(75, 108);
+            emailTextBox.Name = "emailTextBox";
+            emailTextBox.Size = new Size(154, 23);
+            emailTextBox.TabIndex = 4;
             // 
             // saveButton
             // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(154, 164);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 5;
-            this.saveButton.Text = "Guardar";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            saveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            saveButton.Location = new Point(154, 164);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(75, 23);
+            saveButton.TabIndex = 5;
+            saveButton.Text = "Guardar";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // FirstUserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 199);
-            this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.emailTextBox);
-            this.Controls.Add(this.emailLabel);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(this.nameLabel);
-            this.Name = "FirstUserForm";
-            this.Text = "FirstUserForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FirstUserForm_FormClosed);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(241, 199);
+            Controls.Add(saveButton);
+            Controls.Add(emailTextBox);
+            Controls.Add(emailLabel);
+            Controls.Add(titleLabel);
+            Controls.Add(nameTextBox);
+            Controls.Add(nameLabel);
+            Name = "FirstUserForm";
+            Text = "FirstUserForm";
+            FormClosing += FirstUserForm_FormClosing;
+            FormClosed += FirstUserForm_FormClosed;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

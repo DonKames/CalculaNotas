@@ -17,11 +17,25 @@ namespace CalculaNotas.Forms
         private readonly IUnitOfWork _unitOfWork;
         private bool userSavedSuccessfully;
 
-        public FirstUserForm( IUnitOfWork unitOfWork)
+        public FirstUserForm(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             InitializeComponent();
             this.FormClosed += new FormClosedEventHandler(FirstUserForm_FormClosed);
+        }
+
+        void FirstUserForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!userSavedSuccessfully && e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmación", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.No)
+                {
+                    // Cancelar el cierre del formulario
+                    e.Cancel = true;
+                }
+            }
         }
 
         void FirstUserForm_FormClosed(object sender, FormClosedEventArgs e)
