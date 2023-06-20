@@ -76,7 +76,7 @@ namespace CalculaNotas
 
         private void addCareerBtn_Click(object sender, EventArgs e)
         {
-            AddCareerForm addCareerForm = new();
+            AddCareerForm addCareerForm = new(_unitOfWork);
             addCareerForm.ShowDialog();
         }
     }

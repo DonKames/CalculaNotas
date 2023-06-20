@@ -3,7 +3,9 @@ using CalculaNotas.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,10 +23,44 @@ namespace CalculaNotas.Forms
             InitializeComponent();
         }
 
-        private void addCareerBtn_Click(object sender, EventArgs e)
+        private async void addCareerBtn_Click(object sender, EventArgs e)
         {
-            Career career = new();
-            _unitOfWork.Careers.AddCareer(career);
+            Career career = new()
+            {
+                Name = careerNameTxt.Text,
+            };
+
+            // Realizar la validación manualmente
+            var validationContext = new ValidationContext(career);
+            var validationResults = new List<ValidationResult>();
+
+            if (!Validator.TryValidateObject(career, validationContext, validationResults, true))
+            {
+                foreach (var validationResult in validationResults)
+                {
+                    Debug.WriteLine(validationResult.ErrorMessage);
+                }
+                return;  // Salir del método si la validación falló
+            }
+
+
+            try
+            {
+                Career currentCareer = await _unitOfWork.Careers.AddCareer(career);
+
+                UserCareer userCareer = new() { 
+                    CareerId = currentCareer.CareerId,
+                    UserId = 
+                };
+
+                _unitOfWork.UserCareers.AddUserCareer(userCareer);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                throw;
+            }
         }
     }
 }

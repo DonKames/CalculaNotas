@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -59,9 +60,6 @@ namespace CalculaNotas.Forms
 
             try
             {
-                
-                
-                
                 User user = await _unitOfWork.Users.AddUser(newUser);
 
                 CurrentUser = user;
@@ -74,10 +72,11 @@ namespace CalculaNotas.Forms
 
                 this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Aquí puedes manejar el error de la manera que consideres apropiada para tu aplicación.
                 // Podrías mostrar un mensaje al usuario, escribir el error en un archivo de log, etc.
+                Debug.WriteLine(ex);
                 MessageBox.Show("Hubo un error al guardar el usuario. Por favor, intenta nuevamente.");
             }
 

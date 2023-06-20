@@ -10,6 +10,7 @@ namespace CalculaNotas.Repositories
     {
         IUserRepository Users { get; }
         ICareerRepository Careers { get; }
+        IUserCareersRepository UserCareers { get; }
 
         int Complete();
     }

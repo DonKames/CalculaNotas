@@ -12,12 +12,14 @@ namespace CalculaNotas.Repositories
         private readonly ApplicationDbContext _dbContext;
         public IUserRepository Users { get; set; }
         public ICareerRepository Careers { get; set; }
+        public IUserCareersRepository UserCareers { get; set; }
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-            Users = new UserRepository(_dbContext);
             Careers = new CareerRepository(_dbContext);
+            Users = new UserRepository(_dbContext);
+            UserCareers = new UserCareerRepository(_dbContext);
         }
 
         public int Complete()

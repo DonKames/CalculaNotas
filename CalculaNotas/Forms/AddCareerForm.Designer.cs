@@ -30,7 +30,7 @@
         {
             titleLbl = new Label();
             careerNameLbl = new Label();
-            textBox1 = new TextBox();
+            careerNameTxt = new TextBox();
             addCareerBtn = new Button();
             SuspendLayout();
             // 
@@ -53,12 +53,12 @@
             careerNameLbl.TabIndex = 1;
             careerNameLbl.Text = "Nombre Carrera:";
             // 
-            // textBox1
+            // careerNameTxt
             // 
-            textBox1.Location = new Point(12, 72);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(347, 23);
-            textBox1.TabIndex = 2;
+            careerNameTxt.Location = new Point(12, 72);
+            careerNameTxt.Name = "careerNameTxt";
+            careerNameTxt.Size = new Size(347, 23);
+            careerNameTxt.TabIndex = 2;
             // 
             // addCareerBtn
             // 
@@ -76,7 +76,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(371, 134);
             Controls.Add(addCareerBtn);
-            Controls.Add(textBox1);
+            Controls.Add(careerNameTxt);
             Controls.Add(careerNameLbl);
             Controls.Add(titleLbl);
             Name = "AddCareerForm";
@@ -89,7 +89,7 @@
 
         private Label titleLbl;
         private Label careerNameLbl;
-        private TextBox textBox1;
+        private TextBox careerNameTxt;
         private Button addCareerBtn;
     }
 }
