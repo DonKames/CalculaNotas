@@ -41,6 +41,7 @@ namespace CalculaNotas
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerLifetimeScope();
+            builder.RegisterType<CareerRepository>().As<ICareerRepository>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
             builder.RegisterType<MainForm>();

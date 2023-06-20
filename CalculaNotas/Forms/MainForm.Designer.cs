@@ -31,6 +31,8 @@
             configButton = new Button();
             welcomeLabel = new Label();
             statusStrip1 = new StatusStrip();
+            careerMessageLbl = new Label();
+            addCareerBtn = new Button();
             SuspendLayout();
             // 
             // configButton
@@ -61,11 +63,32 @@
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
+            // careerMessageLbl
+            // 
+            careerMessageLbl.AutoSize = true;
+            careerMessageLbl.Location = new Point(12, 43);
+            careerMessageLbl.Name = "careerMessageLbl";
+            careerMessageLbl.Size = new Size(38, 15);
+            careerMessageLbl.TabIndex = 3;
+            careerMessageLbl.Text = "label1";
+            // 
+            // addCareerBtn
+            // 
+            addCareerBtn.Location = new Point(310, 43);
+            addCareerBtn.Name = "addCareerBtn";
+            addCareerBtn.Size = new Size(75, 23);
+            addCareerBtn.TabIndex = 4;
+            addCareerBtn.Text = "+ Carrera";
+            addCareerBtn.UseVisualStyleBackColor = true;
+            addCareerBtn.Click += addCareerBtn_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(397, 561);
+            Controls.Add(addCareerBtn);
+            Controls.Add(careerMessageLbl);
             Controls.Add(statusStrip1);
             Controls.Add(welcomeLabel);
             Controls.Add(configButton);
@@ -82,5 +105,7 @@
         private Button configButton;
         private Label welcomeLabel;
         private StatusStrip statusStrip1;
+        private Label careerMessageLbl;
+        private Button addCareerBtn;
     }
 }

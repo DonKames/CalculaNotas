@@ -30,7 +30,8 @@ namespace CalculaNotas
             try
             {
                 List<User> allUsers = await _unitOfWork.Users.GetAllUsers();
-                // Hacer algo con la lista de usuarios...
+
+                List<Career> allCareers = await _unitOfWork.Careers.GetAllCareers();
 
 
                 Debug.WriteLine("No es nulo");
@@ -55,6 +56,15 @@ namespace CalculaNotas
 
                 }
 
+                if (allCareers.Any())
+                {
+                }
+                else
+                {
+                    careerMessageLbl.ForeColor = Color.Red;
+                    careerMessageLbl.Text = "Agregue su primera Carrera";
+                }
+
             }
             catch (Exception ex)
             {
@@ -62,6 +72,12 @@ namespace CalculaNotas
                 Debug.WriteLine($"Ocurrió un error al cargar los usuarios: {ex.Message}");
             }
 
+        }
+
+        private void addCareerBtn_Click(object sender, EventArgs e)
+        {
+            AddCareerForm addCareerForm = new();
+            addCareerForm.ShowDialog();
         }
     }
 }
