@@ -17,6 +17,8 @@ namespace CalculaNotas.Forms
         private readonly IUnitOfWork _unitOfWork;
         private bool userSavedSuccessfully;
 
+        public User CurrentUser { get; set; }
+
         public FirstUserForm(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -46,7 +48,7 @@ namespace CalculaNotas.Forms
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private async void saveButton_Click(object sender, EventArgs e)
         {
             User newUser = new()
             {
@@ -54,15 +56,19 @@ namespace CalculaNotas.Forms
                 Email = emailTextBox.Text
 
             };
+
             try
             {
-                _unitOfWork.Users.AddUser(newUser);
+                
+                
+                
+                User user = await _unitOfWork.Users.AddUser(newUser);
+
+                CurrentUser = user;
+
                 // _userRepository.AddUser(newUser);
                 _unitOfWork.Complete();
                 MessageBox.Show("Usuario Guardado Exitosamente");
-                // MainForm mainForm = new(_unitOfWork);
-
-                // mainForm.Show();
 
                 userSavedSuccessfully = true;
 

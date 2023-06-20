@@ -48,6 +48,11 @@ namespace CalculaNotas
                     FirstUserForm firstUserForm = new(_unitOfWork);
 
                     firstUserForm.ShowDialog();
+
+                    CurrentUser = firstUserForm.CurrentUser;
+
+                    welcomeLabel.Text = "Bienvenido: " + CurrentUser.Name;
+
                 }
 
             }
