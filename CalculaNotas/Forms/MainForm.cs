@@ -11,12 +11,14 @@ namespace CalculaNotas
         public User CurrentUser { get; set; }
 
         private readonly IUnitOfWork _unitOfWork;
+
         public MainForm(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             InitializeComponent();
         }
 
+        
         private void configButton_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("apretando el boton");
@@ -76,8 +78,17 @@ namespace CalculaNotas
 
         private void addCareerBtn_Click(object sender, EventArgs e)
         {
-            AddCareerForm addCareerForm = new(_unitOfWork);
+            AddCareerForm addCareerForm = new(_unitOfWork, CurrentUser);
+
             addCareerForm.ShowDialog();
+
+            Career career = addCareerForm.Career;
+
+            if (career != null)
+            {
+                careerMessageLbl.Text = career.Name;
+            }
+
         }
     }
 }

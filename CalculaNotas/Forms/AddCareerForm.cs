@@ -17,14 +17,18 @@ namespace CalculaNotas.Forms
     public partial class AddCareerForm : Form
     {
         private readonly IUnitOfWork _unitOfWork;
-        public AddCareerForm(IUnitOfWork unitOfWork)
+        private User User { get; set; }
+        public Career Career { get; set; }
+        public AddCareerForm(IUnitOfWork unitOfWork, User user)
         {
             _unitOfWork = unitOfWork;
+            User = user;
             InitializeComponent();
         }
 
         private async void addCareerBtn_Click(object sender, EventArgs e)
         {
+
             Career career = new()
             {
                 Name = careerNameTxt.Text,
@@ -34,6 +38,7 @@ namespace CalculaNotas.Forms
             var validationContext = new ValidationContext(career);
             var validationResults = new List<ValidationResult>();
 
+
             if (!Validator.TryValidateObject(career, validationContext, validationResults, true))
             {
                 foreach (var validationResult in validationResults)
@@ -42,25 +47,33 @@ namespace CalculaNotas.Forms
                 }
                 return;  // Salir del método si la validación falló
             }
-
+            
 
             try
             {
-                Career currentCareer = await _unitOfWork.Careers.AddCareer(career);
+                career = await _unitOfWork.Careers.AddCareer(career);
 
                 UserCareer userCareer = new() { 
-                    CareerId = currentCareer.CareerId,
-                    UserId = 
+                    CareerId = career.CareerId,
+                    UserId = User.Id,
                 };
 
-                _unitOfWork.UserCareers.AddUserCareer(userCareer);
+                await _unitOfWork.UserCareers.AddUserCareer(userCareer);
+
+                _unitOfWork.Complete();
+
+                MessageBox.Show("Carrera Guardada Exitosamente");
+
+                this.Close();
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                MessageBox.Show("Hubo un error al guardar la Carrera. Por favor, intenta nuevamente.");
                 throw;
             }
+
         }
     }
 }
