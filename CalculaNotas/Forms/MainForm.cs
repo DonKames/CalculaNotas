@@ -14,22 +14,26 @@ namespace CalculaNotas
         // El user para usar en toda la APP
         public User CurrentUser { get; set; }
         public Career CurrentCareer { get; set; }
-        public Semester CurrentSemester { get; set; }
+        public List<Semester> SemesterList { get; set; }
 
 
         public MainForm(IUnitOfWork unitOfWork)
         {
+
             _unitOfWork = unitOfWork;
+            
             InitializeComponent();
+
         }
 
 
         private void configButton_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("apretando el boton");
+
             ConfigForm configForm = new();
 
             configForm.ShowDialog();
+        
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -78,7 +82,11 @@ namespace CalculaNotas
 
                     if (allSemesters.Any())
                     {
-                        CurrentSemester = allSemesters.First();
+                        SemesterList = allSemesters;
+                    }
+                    else
+                    {
+
                     }
                 }
                 else
@@ -126,7 +134,28 @@ namespace CalculaNotas
         {
             if (string.IsNullOrWhiteSpace(semesterTBox.Text))
             {
+                try
+                {
+                    Semester semester = new()
+                    {
+                        Name = semesterTBox.Text
+                    };
 
+                    _unitOfWork.Semesters.AddSemester(semester);
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+
+                    MessageBox.Show("Para agregar un semestre, debe ingresar un numero o nombre.");
+
+                    throw;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Para agregar un semestre, debe ingresar un numero o nombre.");
             }
         }
     }
