@@ -35,7 +35,7 @@
             addCareerBtn = new Button();
             semesterMessageLbl = new Label();
             addSemesterBtn = new Button();
-            textBox1 = new TextBox();
+            semesterTBox = new TextBox();
             SuspendLayout();
             // 
             // configButton
@@ -77,6 +77,7 @@
             // 
             // addCareerBtn
             // 
+            addCareerBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             addCareerBtn.Location = new Point(310, 43);
             addCareerBtn.Name = "addCareerBtn";
             addCareerBtn.Size = new Size(75, 23);
@@ -96,6 +97,7 @@
             // 
             // addSemesterBtn
             // 
+            addSemesterBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             addSemesterBtn.Location = new Point(310, 75);
             addSemesterBtn.Name = "addSemesterBtn";
             addSemesterBtn.Size = new Size(75, 23);
@@ -104,19 +106,20 @@
             addSemesterBtn.UseVisualStyleBackColor = true;
             addSemesterBtn.Click += addSemesterBtn_Click;
             // 
-            // textBox1
+            // semesterTBox
             // 
-            textBox1.Location = new Point(253, 75);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(51, 23);
-            textBox1.TabIndex = 7;
+            semesterTBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            semesterTBox.Location = new Point(253, 75);
+            semesterTBox.Name = "semesterTBox";
+            semesterTBox.Size = new Size(51, 23);
+            semesterTBox.TabIndex = 7;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(397, 561);
-            Controls.Add(textBox1);
+            Controls.Add(semesterTBox);
             Controls.Add(addSemesterBtn);
             Controls.Add(semesterMessageLbl);
             Controls.Add(addCareerBtn);
@@ -141,6 +144,6 @@
         private Button addCareerBtn;
         private Label semesterMessageLbl;
         private Button addSemesterBtn;
-        private TextBox textBox1;
+        private TextBox semesterTBox;
     }
 }

@@ -124,7 +124,10 @@ namespace CalculaNotas
 
         private void addSemesterBtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(semesterTBox.Text))
+            {
 
+            }
         }
     }
 }
