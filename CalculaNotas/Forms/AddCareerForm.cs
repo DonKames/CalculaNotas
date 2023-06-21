@@ -29,17 +29,17 @@ namespace CalculaNotas.Forms
         private async void addCareerBtn_Click(object sender, EventArgs e)
         {
 
-            Career career = new()
+            Career newCareer = new()
             {
                 Name = careerNameTxt.Text,
             };
 
             // Realizar la validación manualmente
-            var validationContext = new ValidationContext(career);
+            var validationContext = new ValidationContext(newCareer);
             var validationResults = new List<ValidationResult>();
 
 
-            if (!Validator.TryValidateObject(career, validationContext, validationResults, true))
+            if (!Validator.TryValidateObject(newCareer, validationContext, validationResults, true))
             {
                 foreach (var validationResult in validationResults)
                 {
@@ -51,10 +51,10 @@ namespace CalculaNotas.Forms
 
             try
             {
-                career = await _unitOfWork.Careers.AddCareer(career);
+                Career = await _unitOfWork.Careers.AddCareer(newCareer);
 
                 UserCareer userCareer = new() { 
-                    CareerId = career.CareerId,
+                    CareerId = newCareer.CareerId,
                     UserId = User.Id,
                 };
 
@@ -65,7 +65,6 @@ namespace CalculaNotas.Forms
                 MessageBox.Show("Carrera Guardada Exitosamente");
 
                 this.Close();
-
             }
             catch (Exception ex)
             {

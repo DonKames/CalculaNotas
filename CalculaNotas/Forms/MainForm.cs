@@ -7,10 +7,15 @@ namespace CalculaNotas
 {
     public partial class MainForm : Form
     {
-        // El user para usar en toda la APP
-        public User CurrentUser { get; set; }
 
         private readonly IUnitOfWork _unitOfWork;
+
+
+        // El user para usar en toda la APP
+        public User CurrentUser { get; set; }
+        public Career CurrentCareer { get; set; }
+        public Semester CurrentSemester { get; set; }
+
 
         public MainForm(IUnitOfWork unitOfWork)
         {
@@ -18,7 +23,7 @@ namespace CalculaNotas
             InitializeComponent();
         }
 
-        
+
         private void configButton_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("apretando el boton");
@@ -31,12 +36,15 @@ namespace CalculaNotas
         {
             try
             {
+                // Peticiones a la BDD
                 List<User> allUsers = await _unitOfWork.Users.GetAllUsers();
 
                 List<Career> allCareers = await _unitOfWork.Careers.GetAllCareers();
 
+                List<Semester> allSemesters = new List<Semester>();
 
-                Debug.WriteLine("No es nulo");
+
+                // Comprobacion Usuarios
                 if (allUsers.Any())
                 {
                     Debug.WriteLine("La lista de usuarios no está vacía");
@@ -58,13 +66,33 @@ namespace CalculaNotas
 
                 }
 
+
+                // Comprobacion Carrera
                 if (allCareers.Any())
                 {
+                    CurrentCareer = allCareers.First();
+                    careerMessageLbl.ForeColor = Color.Green;
+                    careerMessageLbl.Text = CurrentCareer.Name;
+
+                    allSemesters = await _unitOfWork.Semesters.GetSemesterByCareerId(CurrentCareer.CareerId);
+
+                    if (allSemesters.Any())
+                    {
+                        CurrentSemester = allSemesters.First();
+                    }
                 }
                 else
                 {
                     careerMessageLbl.ForeColor = Color.Red;
                     careerMessageLbl.Text = "Agregue su primera Carrera";
+                }
+
+                // Comprobación Semestre
+                if (allSemesters.Any()) { }
+                else
+                {
+                    semesterMessageLbl.ForeColor = Color.Red;
+                    semesterMessageLbl.Text = "Agregue el primer numero de Semestre";
                 }
 
             }
@@ -84,10 +112,18 @@ namespace CalculaNotas
 
             Career career = addCareerForm.Career;
 
+
+
             if (career != null)
             {
+                careerMessageLbl.ForeColor = Color.Green;
                 careerMessageLbl.Text = career.Name;
             }
+
+        }
+
+        private void addSemesterBtn_Click(object sender, EventArgs e)
+        {
 
         }
     }

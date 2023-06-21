@@ -33,6 +33,9 @@
             statusStrip1 = new StatusStrip();
             careerMessageLbl = new Label();
             addCareerBtn = new Button();
+            semesterMessageLbl = new Label();
+            addSemesterBtn = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // configButton
@@ -66,11 +69,11 @@
             // careerMessageLbl
             // 
             careerMessageLbl.AutoSize = true;
-            careerMessageLbl.Location = new Point(12, 43);
+            careerMessageLbl.Location = new Point(12, 44);
             careerMessageLbl.Name = "careerMessageLbl";
-            careerMessageLbl.Size = new Size(38, 15);
+            careerMessageLbl.Size = new Size(101, 15);
             careerMessageLbl.TabIndex = 3;
-            careerMessageLbl.Text = "label1";
+            careerMessageLbl.Text = "careerMessageLbl";
             // 
             // addCareerBtn
             // 
@@ -82,11 +85,40 @@
             addCareerBtn.UseVisualStyleBackColor = true;
             addCareerBtn.Click += addCareerBtn_Click;
             // 
+            // semesterMessageLbl
+            // 
+            semesterMessageLbl.AutoSize = true;
+            semesterMessageLbl.Location = new Point(12, 79);
+            semesterMessageLbl.Name = "semesterMessageLbl";
+            semesterMessageLbl.Size = new Size(116, 15);
+            semesterMessageLbl.TabIndex = 5;
+            semesterMessageLbl.Text = "semesterMessageLbl";
+            // 
+            // addSemesterBtn
+            // 
+            addSemesterBtn.Location = new Point(310, 75);
+            addSemesterBtn.Name = "addSemesterBtn";
+            addSemesterBtn.Size = new Size(75, 23);
+            addSemesterBtn.TabIndex = 6;
+            addSemesterBtn.Text = "+ Semestre";
+            addSemesterBtn.UseVisualStyleBackColor = true;
+            addSemesterBtn.Click += addSemesterBtn_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(253, 75);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(51, 23);
+            textBox1.TabIndex = 7;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(397, 561);
+            Controls.Add(textBox1);
+            Controls.Add(addSemesterBtn);
+            Controls.Add(semesterMessageLbl);
             Controls.Add(addCareerBtn);
             Controls.Add(careerMessageLbl);
             Controls.Add(statusStrip1);
@@ -107,5 +139,8 @@
         private StatusStrip statusStrip1;
         private Label careerMessageLbl;
         private Button addCareerBtn;
+        private Label semesterMessageLbl;
+        private Button addSemesterBtn;
+        private TextBox textBox1;
     }
 }

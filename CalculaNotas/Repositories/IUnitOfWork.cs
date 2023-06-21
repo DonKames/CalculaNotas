@@ -8,8 +8,9 @@ namespace CalculaNotas.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
-        IUserRepository Users { get; }
         ICareerRepository Careers { get; }
+        ISemesterRepository Semesters { get; }
+        IUserRepository Users { get; }
         IUserCareersRepository UserCareers { get; }
 
         int Complete();

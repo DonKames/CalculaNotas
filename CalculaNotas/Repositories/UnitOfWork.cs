@@ -1,4 +1,5 @@
 ﻿using CalculaNotas.Data;
+using CalculaNotas.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,16 @@ namespace CalculaNotas.Repositories
     internal class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _dbContext;
-        public IUserRepository Users { get; set; }
         public ICareerRepository Careers { get; set; }
+        public ISemesterRepository Semesters { get; set; }
+        public IUserRepository Users { get; set; }
         public IUserCareersRepository UserCareers { get; set; }
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
             Careers = new CareerRepository(_dbContext);
+            Semesters = new SemesterRepository(_dbContext);
             Users = new UserRepository(_dbContext);
             UserCareers = new UserCareerRepository(_dbContext);
         }
