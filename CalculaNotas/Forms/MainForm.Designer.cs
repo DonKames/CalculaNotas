@@ -30,13 +30,14 @@
         {
             configButton = new Button();
             welcomeLabel = new Label();
-            statusStrip1 = new StatusStrip();
             careerMessageLbl = new Label();
             addCareerBtn = new Button();
             semesterMessageLbl = new Label();
             addSemesterBtn = new Button();
             semesterTBox = new TextBox();
             semesterCboBx = new ComboBox();
+            courseMessageLbl = new Label();
+            addCourseBtn = new Button();
             SuspendLayout();
             // 
             // configButton
@@ -58,14 +59,6 @@
             welcomeLabel.Size = new Size(72, 15);
             welcomeLabel.TabIndex = 1;
             welcomeLabel.Text = "Bienvenido: ";
-            // 
-            // statusStrip1
-            // 
-            statusStrip1.Location = new Point(0, 539);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(397, 22);
-            statusStrip1.TabIndex = 2;
-            statusStrip1.Text = "statusStrip1";
             // 
             // careerMessageLbl
             // 
@@ -117,24 +110,45 @@
             // 
             // semesterCboBx
             // 
+            semesterCboBx.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             semesterCboBx.FormattingEnabled = true;
             semesterCboBx.Location = new Point(146, 76);
             semesterCboBx.Name = "semesterCboBx";
             semesterCboBx.Size = new Size(101, 23);
             semesterCboBx.TabIndex = 8;
+            semesterCboBx.SelectedIndexChanged += semesterCboBx_SelectedIndexChanged;
+            // 
+            // courseMessageLbl
+            // 
+            courseMessageLbl.AutoSize = true;
+            courseMessageLbl.Location = new Point(12, 111);
+            courseMessageLbl.Name = "courseMessageLbl";
+            courseMessageLbl.Size = new Size(104, 15);
+            courseMessageLbl.TabIndex = 9;
+            courseMessageLbl.Text = "courseMessageLbl";
+            // 
+            // addCourseBtn
+            // 
+            addCourseBtn.Location = new Point(310, 107);
+            addCourseBtn.Name = "addCourseBtn";
+            addCourseBtn.Size = new Size(75, 23);
+            addCourseBtn.TabIndex = 10;
+            addCourseBtn.Text = "+ Ramo";
+            addCourseBtn.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(397, 561);
+            Controls.Add(addCourseBtn);
+            Controls.Add(courseMessageLbl);
             Controls.Add(semesterCboBx);
             Controls.Add(semesterTBox);
             Controls.Add(addSemesterBtn);
             Controls.Add(semesterMessageLbl);
             Controls.Add(addCareerBtn);
             Controls.Add(careerMessageLbl);
-            Controls.Add(statusStrip1);
             Controls.Add(welcomeLabel);
             Controls.Add(configButton);
             MinimumSize = new Size(400, 600);
@@ -149,12 +163,13 @@
 
         private Button configButton;
         private Label welcomeLabel;
-        private StatusStrip statusStrip1;
         private Label careerMessageLbl;
         private Button addCareerBtn;
         private Label semesterMessageLbl;
         private Button addSemesterBtn;
         private TextBox semesterTBox;
         private ComboBox semesterCboBx;
+        private Label courseMessageLbl;
+        private Button addCourseBtn;
     }
 }

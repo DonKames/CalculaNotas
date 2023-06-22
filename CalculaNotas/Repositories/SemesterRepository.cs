@@ -3,6 +3,7 @@ using CalculaNotas.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,8 @@ namespace CalculaNotas.Repositories
         public async Task<List<Semester>> GetAllSemestersByCareerId(int id)
         {
             var career = await _context.Careers.Include(c => c.Semesters).FirstOrDefaultAsync(c => c.CareerId == id);
+            Debug.WriteLine("" + career.ToString());
+
             return career?.Semesters.ToList();
         }
 

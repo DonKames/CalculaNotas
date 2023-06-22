@@ -11,5 +11,7 @@ namespace CalculaNotas.Models
         public int SemesterId { get; set; }
         public string Name { get; set; }
         public ICollection<Course> Courses { get; set; }
+        public int CareerId { get; set; }
+        public Career Career { get; set; }
     }
 }
