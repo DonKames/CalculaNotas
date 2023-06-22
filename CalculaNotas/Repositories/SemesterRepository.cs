@@ -24,7 +24,7 @@ namespace CalculaNotas.Repositories
             return await _context.Semesters.FindAsync(id);
         }
 
-        public async Task<List<Semester>> GetSemesterByCareerId(int id)
+        public async Task<List<Semester>> GetAllSemestersByCareerId(int id)
         {
             var career = await _context.Careers.Include(c => c.Semesters).FirstOrDefaultAsync(c => c.CareerId == id);
             return career?.Semesters.ToList();

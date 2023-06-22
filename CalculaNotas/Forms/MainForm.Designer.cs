@@ -36,6 +36,7 @@
             semesterMessageLbl = new Label();
             addSemesterBtn = new Button();
             semesterTBox = new TextBox();
+            semesterCboBx = new ComboBox();
             SuspendLayout();
             // 
             // configButton
@@ -114,11 +115,20 @@
             semesterTBox.Size = new Size(51, 23);
             semesterTBox.TabIndex = 7;
             // 
+            // semesterCboBx
+            // 
+            semesterCboBx.FormattingEnabled = true;
+            semesterCboBx.Location = new Point(146, 76);
+            semesterCboBx.Name = "semesterCboBx";
+            semesterCboBx.Size = new Size(101, 23);
+            semesterCboBx.TabIndex = 8;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(397, 561);
+            Controls.Add(semesterCboBx);
             Controls.Add(semesterTBox);
             Controls.Add(addSemesterBtn);
             Controls.Add(semesterMessageLbl);
@@ -145,5 +155,6 @@
         private Label semesterMessageLbl;
         private Button addSemesterBtn;
         private TextBox semesterTBox;
+        private ComboBox semesterCboBx;
     }
 }

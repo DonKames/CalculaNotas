@@ -21,7 +21,7 @@ namespace CalculaNotas
         {
 
             _unitOfWork = unitOfWork;
-            
+
             InitializeComponent();
 
         }
@@ -33,7 +33,7 @@ namespace CalculaNotas
             ConfigForm configForm = new();
 
             configForm.ShowDialog();
-        
+
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace CalculaNotas
                     careerMessageLbl.ForeColor = Color.Green;
                     careerMessageLbl.Text = CurrentCareer.Name;
 
-                    allSemesters = await _unitOfWork.Semesters.GetSemesterByCareerId(CurrentCareer.CareerId);
+                    allSemesters = await _unitOfWork.Semesters.GetAllSemestersByCareerId(CurrentCareer.CareerId);
 
                     if (allSemesters.Any())
                     {
@@ -130,7 +130,7 @@ namespace CalculaNotas
 
         }
 
-        private void addSemesterBtn_Click(object sender, EventArgs e)
+        private async void addSemesterBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(semesterTBox.Text))
             {
@@ -141,7 +141,19 @@ namespace CalculaNotas
                         Name = semesterTBox.Text
                     };
 
-                    _unitOfWork.Semesters.AddSemester(semester);
+                    // Agrega el semestre nuevo
+                    await _unitOfWork.Semesters.AddSemester(semester);
+
+                    // Recupera todos los semestres del 
+                    SemesterList = await _unitOfWork.Semesters.GetAllSemestersByCareerId(CurrentCareer.CareerId);
+
+                    Debug.WriteLine(SemesterList.First().ToString());
+
+                    // Se pobla el semester
+                    semesterCboBx.DataSource = semester;
+                    semesterCboBx.DisplayMember = "Name";
+                    semesterCboBx.DisplayMember = "SemesterId";
+
 
                 }
                 catch (Exception ex)
