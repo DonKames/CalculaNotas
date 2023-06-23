@@ -12,10 +12,11 @@ namespace CalculaNotas
 
 
         // El user para usar en toda la APP
-        public User CurrentUser { get; set; }
-        public Career CurrentCareer { get; set; }
-        public Semester CurrentSemester { get; set; }
-        public List<Semester> SemesterList { get; set; }
+        public User? CurrentUser { get; set; }
+        public Career? CurrentCareer { get; set; }
+        public Semester? CurrentSemester { get; set; }
+        public List<Semester>? SemestersList { get; set; }
+        public List<Course>? CoursesList { get; set; }
 
 
         public MainForm(IUnitOfWork unitOfWork)
@@ -87,9 +88,9 @@ namespace CalculaNotas
                     {
                         semesterMessageLbl.ForeColor = Color.Green;
                         semesterMessageLbl.Text = "Semestre :";
-                        SemesterList = allSemesters;
+                        SemestersList = allSemesters;
 
-                        semesterCboBx.DataSource = SemesterList;
+                        semesterCboBx.DataSource = SemestersList;
                         semesterCboBx.DisplayMember = "Name";
                         semesterCboBx.ValueMember = "SemesterId";
 
@@ -106,7 +107,7 @@ namespace CalculaNotas
                     // Comprobacion Semestre
                     if (allSemesters.Any())
                     {
-                        SemesterList = allSemesters;
+                        SemestersList = allSemesters;
                     }
                     else
                     {
@@ -149,13 +150,13 @@ namespace CalculaNotas
 
         private async void addSemesterBtn_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(semesterTBox.Text))
+            if (!string.IsNullOrWhiteSpace(semesterTxBox.Text))
             {
                 try
                 {
                     Semester semester = new()
                     {
-                        Name = semesterTBox.Text,
+                        Name = semesterTxBox.Text,
                         CareerId = CurrentCareer.CareerId,
                     };
 
@@ -166,24 +167,24 @@ namespace CalculaNotas
                     semesterMessageLbl.Text = "Semestre: ";
 
                     // Recupera todos los semestres de la carrera seleccionada
-                    SemesterList = await _unitOfWork.Semesters.GetAllSemestersByCareerId(CurrentCareer.CareerId);
+                    SemestersList = await _unitOfWork.Semesters.GetAllSemestersByCareerId(CurrentCareer.CareerId);
 
 
 
-                    Debug.WriteLine(SemesterList.ToString());
+                    Debug.WriteLine(SemestersList.ToString());
 
                     // Se pobla el semester
-                    semesterCboBx.DataSource = SemesterList;
+                    semesterCboBx.DataSource = SemestersList;
                     semesterCboBx.DisplayMember = "Name";
                     semesterCboBx.ValueMember = "SemesterId";
 
-
+                    MessageBox.Show("El Semestre se agregado exitosamente");
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
 
-                    MessageBox.Show("Para agregar un semestre, debe ingresar un numero o nombre.");
+                    MessageBox.Show("Hubo un Error: " + ex.Message);
 
                     throw;
                 }
@@ -203,6 +204,14 @@ namespace CalculaNotas
             {
                 // Actualiza la variable currentSemester
                 CurrentSemester = selectedSemester;
+            }
+        }
+
+        private void addCourseBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(courseTxBox.Text))
+            {
+                // _unitOfWork
             }
         }
     }

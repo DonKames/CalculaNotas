@@ -34,16 +34,17 @@
             addCareerBtn = new Button();
             semesterMessageLbl = new Label();
             addSemesterBtn = new Button();
-            semesterTBox = new TextBox();
+            semesterTxBox = new TextBox();
             semesterCboBx = new ComboBox();
             courseMessageLbl = new Label();
             addCourseBtn = new Button();
+            courseTxBox = new TextBox();
             SuspendLayout();
             // 
             // configButton
             // 
             configButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            configButton.Location = new Point(310, 12);
+            configButton.Location = new Point(830, 12);
             configButton.Name = "configButton";
             configButton.Size = new Size(75, 23);
             configButton.TabIndex = 0;
@@ -72,7 +73,7 @@
             // addCareerBtn
             // 
             addCareerBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addCareerBtn.Location = new Point(310, 43);
+            addCareerBtn.Location = new Point(830, 43);
             addCareerBtn.Name = "addCareerBtn";
             addCareerBtn.Size = new Size(75, 23);
             addCareerBtn.TabIndex = 4;
@@ -92,7 +93,7 @@
             // addSemesterBtn
             // 
             addSemesterBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addSemesterBtn.Location = new Point(310, 75);
+            addSemesterBtn.Location = new Point(830, 75);
             addSemesterBtn.Name = "addSemesterBtn";
             addSemesterBtn.Size = new Size(75, 23);
             addSemesterBtn.TabIndex = 6;
@@ -100,21 +101,21 @@
             addSemesterBtn.UseVisualStyleBackColor = true;
             addSemesterBtn.Click += addSemesterBtn_Click;
             // 
-            // semesterTBox
+            // semesterTxBox
             // 
-            semesterTBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            semesterTBox.Location = new Point(253, 75);
-            semesterTBox.Name = "semesterTBox";
-            semesterTBox.Size = new Size(51, 23);
-            semesterTBox.TabIndex = 7;
+            semesterTxBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            semesterTxBox.Location = new Point(773, 75);
+            semesterTxBox.Name = "semesterTxBox";
+            semesterTxBox.Size = new Size(51, 23);
+            semesterTxBox.TabIndex = 7;
             // 
             // semesterCboBx
             // 
-            semesterCboBx.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            semesterCboBx.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             semesterCboBx.FormattingEnabled = true;
-            semesterCboBx.Location = new Point(146, 76);
+            semesterCboBx.Location = new Point(200, 76);
             semesterCboBx.Name = "semesterCboBx";
-            semesterCboBx.Size = new Size(101, 23);
+            semesterCboBx.Size = new Size(567, 23);
             semesterCboBx.TabIndex = 8;
             semesterCboBx.SelectedIndexChanged += semesterCboBx_SelectedIndexChanged;
             // 
@@ -129,22 +130,32 @@
             // 
             // addCourseBtn
             // 
-            addCourseBtn.Location = new Point(310, 107);
+            addCourseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            addCourseBtn.Location = new Point(830, 107);
             addCourseBtn.Name = "addCourseBtn";
             addCourseBtn.Size = new Size(75, 23);
             addCourseBtn.TabIndex = 10;
             addCourseBtn.Text = "+ Ramo";
             addCourseBtn.UseVisualStyleBackColor = true;
+            addCourseBtn.Click += addCourseBtn_Click;
+            // 
+            // courseTxBox
+            // 
+            courseTxBox.Location = new Point(200, 107);
+            courseTxBox.Name = "courseTxBox";
+            courseTxBox.Size = new Size(128, 23);
+            courseTxBox.TabIndex = 11;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(397, 561);
+            ClientSize = new Size(917, 561);
+            Controls.Add(courseTxBox);
             Controls.Add(addCourseBtn);
             Controls.Add(courseMessageLbl);
             Controls.Add(semesterCboBx);
-            Controls.Add(semesterTBox);
+            Controls.Add(semesterTxBox);
             Controls.Add(addSemesterBtn);
             Controls.Add(semesterMessageLbl);
             Controls.Add(addCareerBtn);
@@ -167,9 +178,10 @@
         private Button addCareerBtn;
         private Label semesterMessageLbl;
         private Button addSemesterBtn;
-        private TextBox semesterTBox;
+        private TextBox semesterTxBox;
         private ComboBox semesterCboBx;
         private Label courseMessageLbl;
         private Button addCourseBtn;
+        private TextBox courseTxBox;
     }
 }
