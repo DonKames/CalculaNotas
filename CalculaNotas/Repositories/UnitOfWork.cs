@@ -15,11 +15,13 @@ namespace CalculaNotas.Repositories
         public ISemesterRepository Semesters { get; set; }
         public IUserRepository Users { get; set; }
         public IUserCareersRepository UserCareers { get; set; }
+        public ICourseRepository Courses { get; set; }
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
             Careers = new CareerRepository(_dbContext);
+            Courses = new CourseRepository(_dbContext);
             Semesters = new SemesterRepository(_dbContext);
             Users = new UserRepository(_dbContext);
             UserCareers = new UserCareerRepository(_dbContext);

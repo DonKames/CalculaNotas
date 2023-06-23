@@ -42,6 +42,7 @@ namespace CalculaNotas
 
             builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerLifetimeScope();
             builder.RegisterType<CareerRepository>().As<ICareerRepository>();
+            builder.RegisterType<CourseRepository>().As<ICourseRepository>();
             builder.RegisterType<SemesterRepository>().As<ISemesterRepository>();
             builder.RegisterType<UserCareerRepository>().As<IUserCareersRepository>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();

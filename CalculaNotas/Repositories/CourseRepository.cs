@@ -1,5 +1,6 @@
 ﻿using CalculaNotas.Data;
 using CalculaNotas.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,18 @@ namespace CalculaNotas.Repositories
     internal class CourseRepository : ICourseRepository
     {
         private readonly ApplicationDbContext _context;
-        public Task<Course> AddCourse(Course course)
+
+        public CourseRepository(ApplicationDbContext context)
         {
+            _context = context;
+        }
+
+        public async Task<Course> AddCourse(Course course)
+        {
+            var result = await _context.Courses.AddAsync(course);
+            await _context.SaveChangesAsync();
+            return result.Entity;
+
             throw new NotImplementedException();
         }
 
